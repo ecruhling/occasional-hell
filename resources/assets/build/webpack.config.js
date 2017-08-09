@@ -52,8 +52,8 @@ let webpackConfig = {
         test: /\.js$/,
         exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
         use: [
-          { loader: 'cache' },
-          { loader: 'buble', options: { objectAssign: 'Object.assign' } },
+          {loader: 'cache'},
+          {loader: 'buble', options: {objectAssign: 'Object.assign'}},
         ],
       },
       {
@@ -62,13 +62,13 @@ let webpackConfig = {
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
-            { loader: 'cache' },
-            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+            {loader: 'cache'},
+            {loader: 'css', options: {sourceMap: config.enabled.sourceMaps}},
             {
               loader: 'postcss', options: {
-                config: { path: __dirname, ctx: config },
-                sourceMap: config.enabled.sourceMaps,
-              },
+              config: {path: __dirname, ctx: config},
+              sourceMap: config.enabled.sourceMaps,
+            },
             },
           ],
         }),
@@ -79,16 +79,19 @@ let webpackConfig = {
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
-            { loader: 'cache' },
-            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+            {loader: 'cache'},
+            {loader: 'css', options: {sourceMap: config.enabled.sourceMaps}},
             {
               loader: 'postcss', options: {
-                config: { path: __dirname, ctx: config },
-                sourceMap: config.enabled.sourceMaps,
-              },
+              config: {path: __dirname, ctx: config},
+              sourceMap: config.enabled.sourceMaps,
             },
-            { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
-            { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
+            },
+            {
+              loader: 'resolve-url',
+              options: {sourceMap: config.enabled.sourceMaps}
+            },
+            {loader: 'sass', options: {sourceMap: config.enabled.sourceMaps}},
           ],
         }),
       },
@@ -111,6 +114,10 @@ let webpackConfig = {
           name: `${config.cacheBusting}.[ext]`,
         },
       },
+      {
+        test: /\.vue$/,
+        loader: 'vue'
+      },
     ],
   },
   resolve: {
@@ -120,6 +127,9 @@ let webpackConfig = {
       'bower_components',
     ],
     enforceExtension: false,
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+    },
   },
   resolveLoader: {
     moduleExtensions: ['-loader'],
@@ -157,19 +167,19 @@ let webpackConfig = {
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.optimize,
       debug: config.enabled.watcher,
-      stats: { colors: true },
+      stats: {colors: true},
     }),
     new webpack.LoaderOptionsPlugin({
       test: /\.s?css$/,
       options: {
-        output: { path: config.paths.dist },
+        output: {path: config.paths.dist},
         context: config.paths.assets,
       },
     }),
     new webpack.LoaderOptionsPlugin({
       test: /\.js$/,
       options: {
-        eslint: { failOnWarning: false, failOnError: true },
+        eslint: {failOnWarning: false, failOnError: true},
       },
     }),
     new StyleLintPlugin({
@@ -179,7 +189,8 @@ let webpackConfig = {
   ],
 };
 
-/* eslint-disable global-require */ /** Let's only load dependencies as needed */
+/* eslint-disable global-require */
+/** Let's only load dependencies as needed */
 
 if (config.enabled.optimize) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));
