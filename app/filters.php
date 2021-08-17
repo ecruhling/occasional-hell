@@ -12,5 +12,9 @@ namespace App;
  * @return string
  */
 add_filter('excerpt_more', function () {
-    return sprintf('&hellip; <a class="inline-block bg-black text-white text-xs px-2 rounded-lg tracking-widest" href="%s">%s</a>', get_permalink(), __('continues', 'sage'));
+    return sprintf(
+        '&hellip; <a class="inline-block bg-black text-white text-xs px-2 rounded-lg tracking-widest" href="%s">%s</a>',
+        get_permalink(),
+        __('continues', 'sage')
+    );
 });
