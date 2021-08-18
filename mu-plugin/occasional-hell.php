@@ -97,12 +97,29 @@ add_filter('enter_title_here', 'change_default_title');
  * Order devices by alphabetical order on archive page.
  * @param $query
  */
-function alpha_order_classes($query)
+function alpha_order_items($query)
 {
     if ($query->is_post_type_archive('devices') && $query->is_main_query()) {
+        $query->set('posts_per_page', '-1');
         $query->set('orderby', 'title');
         $query->set('order', 'ASC');
     }
 }
 
-add_action('pre_get_posts', 'alpha_order_classes');
+add_action('pre_get_posts', 'alpha_order_items');
+
+/**
+ * Custom Page Title for Devices Archive Page.
+ */
+function devices_archive_title($title)
+{
+
+    if (is_post_type_archive('devices')) {
+        $title = 'Infernal Device - Machinery of Torture & Execution - ' . get_bloginfo('name');
+        return $title;
+    }
+
+    return $title;
+}
+
+add_filter('pre_get_document_title', 'devices_archive_title', 9999);

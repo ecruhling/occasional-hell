@@ -4,7 +4,7 @@
   @include('partials.page-header')
 
   @if (! have_posts())
-    <x-alert type="warning">
+    <x-alert type="warning text-center p-4">
       {!! __('Sorry, no results were found.', 'sage') !!}
     </x-alert>
 
