@@ -35,11 +35,12 @@ class Alert extends Component
     /**
      * Create the component instance.
      *
-     * @param  string  $type
-     * @param  string  $message
+     * @param string $type
+     * @param string|null $message
+     *
      * @return void
      */
-    public function __construct($type = 'default', $message = null)
+    public function __construct(string $type = 'default', string $message = null)
     {
         $this->type = $this->types[$type] ?? $this->types['default'];
         $this->message = $message;

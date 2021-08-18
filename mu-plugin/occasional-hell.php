@@ -92,3 +92,17 @@ function change_default_title($title)
 }
 
 add_filter('enter_title_here', 'change_default_title');
+
+/**
+ * Order devices by alphabetical order on archive page.
+ * @param $query
+ */
+function alpha_order_classes($query)
+{
+    if ($query->is_post_type_archive('devices') && $query->is_main_query()) {
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+    }
+}
+
+add_action('pre_get_posts', 'alpha_order_classes');
