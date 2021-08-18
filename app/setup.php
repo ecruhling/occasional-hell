@@ -54,10 +54,35 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('soil', [
         'clean-up',
-        'nav-walker',
+        'disable-asset-versioning',
+        'disable-trackbacks',
+        'js-to-footer',
         'nice-search',
         'relative-urls'
     ]);
+
+    /**
+     * Enable features from Resource Config_WP when plugin is activated
+     * @link https://github.com/ecruhling/config_wp/
+     */
+    add_theme_support('resource-change-howdy');
+    add_theme_support('resource-change-footer');
+    add_theme_support('resource-seo-framework');
+    add_theme_support('resource-custom-login');
+    add_theme_support('resource-change-author');
+    add_theme_support('resource-change-menu-order');
+    add_theme_support('resource-simplify-images');
+    add_theme_support('resource-disable-comments');
+//    add_theme_support('resource-remove-posts');
+    add_theme_support('resource-remove-menu-items');
+    add_theme_support('resource-remove-widgets');
+    add_theme_support('resource-clean-customizer');
+    add_theme_support('resource-clean-dashboard');
+//    add_theme_support('resource-posts-to-news');
+    add_theme_support('resource-gravity-forms');
+    add_theme_support('resource-svg');
+    add_theme_support('resource-advanced-custom-fields');
+    add_theme_support('resource-nav-walker');
 
     /**
      * Disable full-site editing support.
@@ -141,12 +166,6 @@ add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
 
     /**
-     * Enable post thumbnail support.
-     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-     */
-    add_theme_support('post-thumbnails');
-
-    /**
      * Enable wide alignment support.
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
      */
@@ -177,6 +196,12 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    // Add support for Block Styles.
+    add_theme_support('wp-block-styles');
+
+    // Add support for editor styles.
+    add_theme_support('editor-styles');
 }, 20);
 
 /**

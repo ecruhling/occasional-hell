@@ -1,5 +1,5 @@
 <div {{ $attributes->merge(['class' => $type]) }}>
-  <div class="px-4 py-3">
+  <div class="p-5">
     {!! $message ?? $slot !!}
   </div>
 </div>

@@ -5,12 +5,5 @@
         {!! $title !!}
       </a>
     </h2>
-    @include('partials.date-posted')
   </header>
-  <div class="entry-summary">
-    @php(the_excerpt())
-  </div>
-  <footer>
-    @include('partials.author')
-  </footer>
 </article>
