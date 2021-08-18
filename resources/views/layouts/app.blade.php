@@ -1,4 +1,4 @@
-<div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-4 flex-grow">
+<div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-4 flex-grow h-full">
 
   <a class="sr-only focus:not-sr-only" href="#main">
     {{ __('skip to content') }}
@@ -18,5 +18,5 @@
     </aside>
   @endif
 
-  @include('partials.footer')
 </div>
+@include('partials.footer')

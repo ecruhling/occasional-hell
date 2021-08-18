@@ -3,7 +3,7 @@
     <h1 class="entry-title inline-block relative z-10 bg-gradient-to-r from-yellow-200 to-yellow-200 py-1 px-2">
       {!! $title !!}
     </h1>
-    <time class="updated text-sm bg-gray-200 p-1 pl-2 z-0 -left-3 -bottom-2 text-normal relative tracking-wider" datetime="{{ get_post_time('c', true) }}">
+    <time class="updated text-sm bg-gray-200 p-1 pl-2 z-0 -left-3 -bottom-3 text-normal relative tracking-wider" datetime="{{ get_post_time('c', true) }}">
       ({{ get_the_date() }})
     </time>
   </header>
