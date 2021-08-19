@@ -1,4 +1,4 @@
-<div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-4 flex-grow h-full">
+<div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-4 flex-grow h-full" style="min-height: 95vh;">
 
   <a class="sr-only focus:not-sr-only" href="#main">
     {{ __('skip to content') }}

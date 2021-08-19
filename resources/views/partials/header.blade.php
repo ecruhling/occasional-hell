@@ -1,6 +1,6 @@
-<header class="w-fixed w-half flex-shrink flex-grow-0 px-4">
-  <div class="sticky top-0 p-4 w-full h-full">
-    <a class="brand" href="{{ home_url('/') }}">
+<header class="w-fixed w-half flex-shrink flex-grow-0 px-4 pb-5">
+  <div class="sticky top-0 w-full h-full">
+    <a class="brand block mt-2 mb-4" href="{{ home_url('/') }}">
       <span class="text-black">{{ $siteName }}</span>
     </a>
     <nav class="nav-primary">
