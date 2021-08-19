@@ -1,5 +1,10 @@
 const mix = require('laravel-mix');
 require('@tinypixelco/laravel-mix-wp-blocks');
+const Notifications = require('pretty-mix-notifications');
+
+// Pretty Mix Notifications
+// https://github.com/ntavelis/pretty-mix-notifications
+mix.extend('prettyNotifications', new Notifications);
 
 /*
  |--------------------------------------------------------------------------
@@ -28,7 +33,7 @@ mix
   .js('resources/scripts/app.js', 'scripts')
   .js('resources/scripts/customizer.js', 'scripts')
   .blocks('resources/scripts/editor.js', 'scripts')
-  .autoload({ jquery: ['$', 'window.jQuery'] })
+  .autoload({jquery: ['$', 'window.jQuery']})
   .extract();
 
 mix
@@ -37,4 +42,9 @@ mix
 
 mix
   .sourceMaps()
-  .version();
+  .version()
+  .prettyNotifications({
+    title: 'Occasional Hell',
+    successSound: false,
+  });
+
