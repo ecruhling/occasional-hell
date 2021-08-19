@@ -6,8 +6,9 @@
 
   @include('partials.header')
 
-  <main id="main" class="w-full flex-grow pt-1 px-3 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none">
+  <main id="main" class="w-full flex-grow pt-1 px-3 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none relative">
     @yield('content')
+    @include('partials.notice')
   </main>
 
   @hasSection('sidebar')
