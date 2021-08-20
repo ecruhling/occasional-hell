@@ -5,7 +5,7 @@
     </a>
     <nav class="nav-primary pl-5">
       @if (has_nav_menu('primary_navigation'))
-        {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_id' => 'main-menu', 'menu_class' => 'nav text-white', 'echo' => false]) !!}
+        {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_id' => 'main-menu', 'menu_class' => 'nav text-white tracking-widest', 'echo' => false]) !!}
       @endif
     </nav>
   </div>
