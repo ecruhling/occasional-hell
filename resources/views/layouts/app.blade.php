@@ -1,4 +1,4 @@
-<div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-4 flex-grow h-full" style="min-height: 95vh;">
+<div class="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap pb-4 flex-grow h-full" style="min-height: 95vh;">
 
   <a class="sr-only focus:not-sr-only" href="#main">
     {{ __('skip to content') }}
@@ -6,7 +6,7 @@
 
   @include('partials.header')
 
-  <main id="main" class="w-full flex-grow pt-1 px-3 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none relative">
+  <main id="main" class="w-full flex-grow pt-4 pl-6 pr-4 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none relative">
     @yield('content')
     @include('partials.notice')
   </main>
