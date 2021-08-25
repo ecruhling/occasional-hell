@@ -19,6 +19,9 @@
 // Import Tailwind utilities
 @import 'tailwindcss/utilities';
 
+// Import other SCSS files
+@import 'layouts/comments';
+
 /*** Stuff ***/
 
 a.brand {

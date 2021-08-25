@@ -72,13 +72,10 @@ add_action('after_setup_theme', function () {
     add_theme_support('resource-change-author');
     add_theme_support('resource-change-menu-order');
     add_theme_support('resource-simplify-images');
-    add_theme_support('resource-disable-comments');
-//    add_theme_support('resource-remove-posts');
     add_theme_support('resource-remove-menu-items');
     add_theme_support('resource-remove-widgets');
     add_theme_support('resource-clean-customizer');
     add_theme_support('resource-clean-dashboard');
-//    add_theme_support('resource-posts-to-news');
     add_theme_support('resource-gravity-forms');
     add_theme_support('resource-svg');
     add_theme_support('resource-advanced-custom-fields');
