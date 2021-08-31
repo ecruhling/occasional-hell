@@ -8,11 +8,12 @@
 @import '~sass-svg-uri/_svg-uri';
 
 /** Import swiper **/
-@import '~swiper/swiper.scss';
-@import '~swiper/components/navigation/navigation';
-@import '~swiper/components/pagination/pagination';
-@import '~swiper/components/a11y/a11y';
-@import '~swiper/components/effect-fade/effect-fade';
+//@import '~swiper/swiper.scss';
+@import 'node_modules/swiper/swiper.scss';
+//@import '~swiper/components/navigation/navigation';
+//@import '~swiper/components/pagination/pagination';
+//@import '~swiper/components/a11y/a11y';
+//@import '~swiper/components/effect-fade/effect-fade';
 
 // Import Tailwind components
 @import 'tailwindcss/components';
