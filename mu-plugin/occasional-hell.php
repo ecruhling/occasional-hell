@@ -123,3 +123,22 @@ function devices_archive_title($title)
 }
 
 add_filter('pre_get_document_title', 'devices_archive_title', 9999);
+
+/**
+ * Remove website field from comment form
+ */
+add_filter('comment_form_default_fields', function ($fields) {
+    unset($fields['url']);
+
+    return $fields;
+});
+
+/**
+ * Move comment field to bottom of comment form
+ */
+add_filter('comment_form_fields', function ($fields) {
+    $comment_field = $fields['comment'];
+    unset($fields['comment']);
+    $fields['comment'] = $comment_field;
+    return $fields;
+});
