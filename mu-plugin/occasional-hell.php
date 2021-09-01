@@ -95,6 +95,7 @@ add_filter('enter_title_here', 'change_default_title');
 
 /**
  * Order devices by alphabetical order on archive page.
+ *
  * @param $query
  */
 function alpha_order_items($query)
@@ -116,6 +117,7 @@ function devices_archive_title($title)
 
     if (is_post_type_archive('devices')) {
         $title = 'Infernal Device - Machinery of Torture & Execution - ' . get_bloginfo('name');
+
         return $title;
     }
 
@@ -140,5 +142,22 @@ add_filter('comment_form_fields', function ($fields) {
     $comment_field = $fields['comment'];
     unset($fields['comment']);
     $fields['comment'] = $comment_field;
+
     return $fields;
 });
+
+/**
+ * The SEO Framework filters to use ACF Pro fields to meta description
+ */
+function cpt_device_seo_framework_description($description)
+{
+    if (empty($description) & get_post_type(get_the_ID()) === 'devices') {
+        $description = wp_trim_words(wp_strip_all_tags(apply_filters('the_content', get_field('content_left', get_the_ID()))), 30, '&hellip;');
+    }
+
+    return $description;
+}
+
+add_filter('the_seo_framework_custom_field_description', 'cpt_device_seo_framework_description', 10, 2);
+add_filter('the_seo_framework_generated_description', 'cpt_device_seo_framework_description', 10, 2);
+add_filter('the_seo_framework_fetched_description_excerpt', 'cpt_device_seo_framework_description', 10, 2);
