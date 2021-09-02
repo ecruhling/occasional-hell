@@ -161,3 +161,25 @@ function cpt_device_seo_framework_description($description)
 add_filter('the_seo_framework_custom_field_description', 'cpt_device_seo_framework_description', 10, 2);
 add_filter('the_seo_framework_generated_description', 'cpt_device_seo_framework_description', 10, 2);
 add_filter('the_seo_framework_fetched_description_excerpt', 'cpt_device_seo_framework_description', 10, 2);
+
+/**
+ * Change title of Device archive page
+ */
+add_action('init', function () {
+    global $wp_post_types;
+    $labels = &$wp_post_types['devices']->labels;
+    $labels->name = 'infernal device';
+});
+
+//add_filter('get_the_archive_title', function ($title) {
+//    if (is_post_type_archive()) {
+//        $title = post_type_archive_title('', false);
+//    } elseif (is_tax()) {
+//        $tax = get_taxonomy(get_queried_object()->taxonomy);
+//        $title = single_term_title('', false);
+//    } elseif (is_category()) {
+//        $title = single_cat_title('', false);
+//    }
+//
+//    return $title;
+//});

@@ -4,6 +4,9 @@
 // Import global styles
 @import 'common/global';
 
+// Import WordPress block styles
+@import 'blocks/wp-blocks';
+
 /** Import sass-svg-uri **/
 @import 'node_modules/sass-svg-uri/_svg-uri';
 

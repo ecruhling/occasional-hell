@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+{{--  @include('partials.page-header')--}}
+
   <div class="page-header">
     <h1 class="mb-2">Infernal Device</h1>
     <h2 class="mt-0">Machinery of Torture and Execution</h2>

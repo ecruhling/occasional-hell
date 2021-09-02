@@ -1,0 +1,24 @@
+.wp-block-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  &.has-3-columns {
+    @media screen and (min-width: 1300px) {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 0;
+    }
+  }
+
+  &.has-4-columns {
+    @media screen and (min-width: 1300px) {
+      grid-template-columns: repeat(4, 1fr);
+      row-gap: 0;
+    }
+  }
+}
