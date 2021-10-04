@@ -1,6 +1,6 @@
 <article @php(post_class())>
   <header>
-    <h1 class="entry-title inline-block relative z-10 bg-gradient-to-r from-yellow-200 to-yellow-200 py-1 px-2">
+    <h1 class="entry-title inline relative z-10 bg-gradient-to-r from-yellow-200 to-yellow-200 py-1 px-2">
       {!! $title !!}
     </h1>
     @include('partials.date-posted')

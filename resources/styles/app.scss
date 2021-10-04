@@ -22,7 +22,8 @@
 // Import Tailwind utilities
 @import 'tailwindcss/utilities';
 
-// Import other SCSS files
+// Import the rest
+@import 'layouts/posts';
 @import 'layouts/comments';
 
 /*** Stuff ***/
