@@ -6,7 +6,7 @@
 
   @include('partials.header')
 
-  <main id="main" class="w-full flex-grow pt-4 pl-6 pr-4 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none relative">
+  <main id="main" class="w-full flex-grow pt-4 pb-5 pl-6 pr-4 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none relative">
     @yield('content')
     @include('partials.notice')
   </main>
