@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('partials.page-header')
+  @if (is_home())
+    @include('partials.page-header-sr-only')
+  @else
+    @include('partials.page-header')
+  @endif
 
   @if (! have_posts())
     <x-alert type="warning text-center p-4">
@@ -12,7 +16,7 @@
   @endif
 
   @while(have_posts()) @php(the_post())
-    @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+  @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
   @endwhile
 
   {!! get_the_posts_navigation() !!}
