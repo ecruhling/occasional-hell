@@ -4,11 +4,10 @@
     {{ __('skip to content') }}
   </a>
 
-  @include('partials.header')
+  @include('sections.header')
 
-  <main id="main" class="w-full flex-grow pt-4 pb-5 pl-6 pr-4 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none relative">
+  <main id="main" class="main w-full flex-grow pt-4 pb-5 pl-6 pr-4 prose sm:prose-sm lg:prose-lg xl:prose-xl 2xl:prose-2xl max-w-none relative">
     @yield('content')
-    @include('partials.notice')
   </main>
 
   @hasSection('sidebar')
@@ -20,4 +19,5 @@
   @endif
 
 </div>
-@include('partials.footer')
+
+@include('sections.footer')

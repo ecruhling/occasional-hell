@@ -23,7 +23,7 @@ class Post extends Composer
      *
      * @return array
      */
-    public function override(): array
+    public function override()
     {
         return [
             'title' => $this->title(),
@@ -35,7 +35,7 @@ class Post extends Composer
      *
      * @return string
      */
-    public function title(): string
+    public function title()
     {
         if ($this->view->name() !== 'partials.page-header' || $this->view->name() !== 'partials.page-header-sr-only') {
             return get_the_title();
@@ -55,7 +55,7 @@ class Post extends Composer
 
         if (is_search()) {
             return sprintf(
-                /* translators: %s is replaced with the search query */
+            /* translators: %s is replaced with the search query */
                 __('Search Results for %s', 'sage'),
                 get_search_query()
             );

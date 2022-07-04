@@ -6,7 +6,7 @@
 
 namespace App;
 
-use function Roots\asset;
+use function Roots\bundle;
 
 /**
  * Register the theme assets.
@@ -14,16 +14,7 @@ use function Roots\asset;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
-    wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js'], null, true);
-
-    wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
-
-    if (is_single() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
-    }
-
-    wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), false, null);
+    bundle('app')->enqueue();
 }, 100);
 
 /**
@@ -32,14 +23,7 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
-    if ($manifest = asset('scripts/manifest.asset.php')->load()) {
-        wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ...array_values($manifest));
-        wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), ['sage/vendor.js'], null, true);
-
-        wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
-    }
-
-    wp_enqueue_style('sage/editor.css', asset('styles/editor.css')->uri(), false, null);
+    bundle('editor')->enqueue();
 }, 100);
 
 /**
@@ -56,7 +40,6 @@ add_action('after_setup_theme', function () {
         'clean-up',
         'disable-asset-versioning',
         'disable-trackbacks',
-        'js-to-footer',
         'nice-search',
         'relative-urls'
     ]);
@@ -93,62 +76,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage')
+        'primary_navigation' => __('Primary Navigation', 'sage'),
     ]);
-
-    /**
-     * Register the editor color palette.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
-     */
-    add_theme_support('editor-color-palette', []);
-
-    /**
-     * Register the editor color gradient presets.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-gradient-presets
-     */
-    add_theme_support('editor-gradient-presets', []);
-
-    /**
-     * Register the editor font sizes.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-font-sizes
-     */
-    add_theme_support('editor-font-sizes', []);
-
-    /**
-     * Register relative length units in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#support-custom-units
-     */
-    add_theme_support('custom-units');
-
-    /**
-     * Enable support for custom line heights in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#supporting-custom-line-heights
-     */
-    add_theme_support('custom-line-height');
-
-    /**
-     * Enable support for custom block spacing control in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#spacing-control
-     */
-    add_theme_support('custom-spacing');
-
-    /**
-     * Disable custom colors in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
-     */
-    add_theme_support('disable-custom-colors');
-
-    /**
-     * Disable custom color gradients in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-gradients
-     */
-    add_theme_support('disable-custom-gradients');
-
-    /**
-     * Disable custom font sizes in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-font-sizes
-     */
-    add_theme_support('disable-custom-font-sizes');
 
     /**
      * Disable the default block patterns.
@@ -163,10 +92,10 @@ add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
 
     /**
-     * Enable wide alignment support.
-     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
+     * Enable post thumbnail support.
+     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
      */
-    add_theme_support('align-wide');
+    add_theme_support('post-thumbnails');
 
     /**
      * Enable responsive embed support.
@@ -185,7 +114,7 @@ add_action('after_setup_theme', function () {
         'gallery',
         'search-form',
         'script',
-        'style'
+        'style',
     ]);
 
     /**
@@ -193,12 +122,6 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
-
-    // Add support for Block Styles.
-    add_theme_support('wp-block-styles');
-
-    // Add support for editor styles.
-    add_theme_support('editor-styles');
 }, 20);
 
 /**
@@ -211,16 +134,16 @@ add_action('widgets_init', function () {
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget' => '</section>',
         'before_title' => '<h3>',
-        'after_title' => '</h3>'
+        'after_title' => '</h3>',
     ];
 
     register_sidebar([
-        'name' => __('Primary', 'sage'),
-        'id' => 'sidebar-primary'
-    ] + $config);
+                         'name' => __('Primary', 'sage'),
+                         'id' => 'sidebar-primary',
+                     ] + $config);
 
     register_sidebar([
-        'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer'
-    ] + $config);
+                         'name' => __('Footer', 'sage'),
+                         'id' => 'sidebar-footer',
+                     ] + $config);
 });
