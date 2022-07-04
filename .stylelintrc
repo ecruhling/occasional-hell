@@ -1,0 +1,15 @@
+{
+  "plugins": ["stylelint-scss"],
+  "customSyntax": "postcss-scss",
+  "extends": [
+    "@roots/sage/stylelint-config",
+    "@roots/bud-tailwindcss/stylelint-config"
+  ],
+  "rules": {
+    "no-descending-specificity": null,
+    "selector-class-pattern": null,
+    "function-no-unknown": null,
+    "max-line-length": null,
+    "font-family-name-quotes": null
+  }
+}

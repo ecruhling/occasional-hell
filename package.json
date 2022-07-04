@@ -10,6 +10,10 @@
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint resources/scripts",
+    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
+    "test": "npm run lint",
     "translate": "yarn translate:pot && yarn translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
     "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
@@ -19,11 +23,14 @@
   },
   "devDependencies": {
     "@roots/bud": "5.8.7",
+    "@roots/bud-eslint": "^5.8.7",
     "@roots/bud-postcss": "^5.8.7",
+    "@roots/bud-prettier": "^5.8.7",
     "@roots/bud-sass": "^5.8.7",
+    "@roots/bud-stylelint": "^5.8.7",
     "@roots/bud-tailwindcss": "5.8.7",
-    "@roots/sage": "5.8.7",
-    "sass-svg-uri": "^1.0.0"
+    "@roots/eslint-config": "^5.8.7",
+    "@roots/sage": "5.8.7"
   },
   "dependencies": {
     "swiper": "^7.0.8"
